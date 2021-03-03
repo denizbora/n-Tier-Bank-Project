@@ -28,18 +28,28 @@ namespace Bank.FormApp
             var password1 = Program.Md5Hash(textBox2.Text);
             var accountService = InstanceFactory.GetInstance<IUserAccountService>();
             Expression<Func<UserAccount, bool>> usrExpression = user => user.GovId == govId;
-            var password = accountService.Get(usrExpression).Password;
-            if (password == password1)
+            var user = accountService.Get(usrExpression);
+            if (user!=null)
             {
-                var frm1 = new User();
-                frm1.Show();
-                this.Close();
+                var password = user.Password;
+                if (password == password1)
+                {
+                    var frm1 = new User();
+                    frm1.Show();
+                    this.Close();
+                }
+                else
+                {
+                    var msg = "Wrong Password";
+                    MessageBox.Show(msg);
+                }
             }
             else
             {
-                var msg = "Wrong Password";
+                var msg = "User not found";
                 MessageBox.Show(msg);
             }
+            
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
