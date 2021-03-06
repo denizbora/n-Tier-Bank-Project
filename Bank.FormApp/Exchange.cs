@@ -466,5 +466,89 @@ namespace Bank.FormApp
             var frm = new User();
             frm.Show();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            var text = string.Empty;
+            foreach (var character in textBox1.Text)
+            {
+                if (char.IsNumber(character))
+                    text += character;
+            }
+
+            textBox1.Text = text;
+            if (textBox1.Text=="")
+            {
+                label4.Text = "";
+            }
+            if (textBox1.Text!="")
+            {
+                if (comboBox1.Text == "Lira")
+                {
+                    if (comboBox2.Text == "Dollar")
+                    {
+
+                        label4.Text = "You will take: " + string.Format("{0:0.##}", Convert.ToDouble(textBox1.Text) / Convert.ToDouble(Program.Usd_Sell()) * 10000) + "$";
+
+                    }
+                    else if (comboBox2.Text == "Euro")
+                    {
+                        label4.Text = "You will take: " + string.Format("{0:0.##}", Convert.ToDouble(textBox1.Text) / Convert.ToDouble(Program.Euro_Sell()) * 10000) + "€";
+                    }
+                    else if (comboBox2.Text == "Pound")
+                    {
+                        label4.Text = "You will take: " + string.Format("{0:0.##}", Convert.ToDouble(textBox1.Text) / Convert.ToDouble(Program.Pound_Sell()) * 10000) + "£";
+
+                    }
+
+                }
+                else if (comboBox1.Text == "Dollar")
+                {
+                    if (comboBox2.Text == "Lira")
+                    {
+                        label4.Text = "You will take: " + string.Format("{0:0.##}", Convert.ToDouble(textBox1.Text) * Convert.ToDouble(Program.Usd_Buy()) / 10000) + "₺";
+                    }
+                    else if (comboBox2.Text == "Euro")
+                    {
+                        label4.Text = "You will take: " + string.Format("{0:0.##}", Convert.ToDouble(textBox1.Text) * Convert.ToDouble(Program.Usd_Buy()) / Convert.ToDouble(Program.Euro_Sell())) + "€";
+                    }
+                    else if (comboBox2.Text == "Pound")
+                    {
+                        label4.Text = "You will take: " + string.Format("{0:0.##}", Convert.ToDouble(textBox1.Text) * Convert.ToDouble(Program.Usd_Buy()) / Convert.ToDouble(Program.Pound_Sell())) + "£";
+                    }
+                }
+                else if (comboBox1.Text == "Euro")
+                {
+                    if (comboBox2.Text == "Dollar")
+                    {
+                        label4.Text = "You will take: " + string.Format("{0:0.##}", Convert.ToDouble(textBox1.Text) * Convert.ToDouble(Program.Euro_Buy()) / Convert.ToDouble(Program.Usd_Sell())) + "$";
+                    }
+                    else if (comboBox2.Text == "Lira")
+                    {
+                        label4.Text = "You will take: " + string.Format("{0:0.##}", Convert.ToDouble(textBox1.Text) * Convert.ToDouble(Program.Euro_Buy()) / 10000) + "₺";
+                    }
+                    else if (comboBox2.Text == "Pound")
+                    {
+                        label4.Text = "You will take: " + string.Format("{0:0.##}", Convert.ToDouble(textBox1.Text) * Convert.ToDouble(Program.Euro_Buy()) / Convert.ToDouble(Program.Pound_Sell())) + "£";
+                    }
+                }
+                else if (comboBox1.Text == "Pound")
+                {
+                    if (comboBox2.Text == "Dollar")
+                    {
+                        label4.Text = "You will take: " + string.Format("{0:0.##}", Convert.ToDouble(textBox1.Text) * Convert.ToDouble(Program.Pound_Buy()) / Convert.ToDouble(Program.Usd_Sell())) + "$";
+                    }
+                    else if (comboBox2.Text == "Euro")
+                    {
+                        label4.Text = "You will take: " + string.Format("{0:0.##}", Convert.ToDouble(textBox1.Text) * Convert.ToDouble(Program.Pound_Buy()) / Convert.ToDouble(Program.Euro_Sell())) + "€";
+                    }
+                    else if (comboBox2.Text == "Lira")
+                    {
+                        label4.Text = "You will take: " + string.Format("{0:0.##}", Convert.ToDouble(textBox1.Text) * Convert.ToDouble(Program.Pound_Buy()) / 10000) + "₺";
+                    }
+                }
+            }
+            
+        }
     }
 }
