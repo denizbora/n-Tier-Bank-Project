@@ -36,7 +36,8 @@ namespace Bank.FormApp
             try
             {
                 TCKN.KPSPublicSoapClient webService = new TCKN.KPSPublicSoapClient(KPSPublicSoapClient.EndpointConfiguration.KPSPublicSoap12);
-                result = webService.TCKimlikNoDogrula(govId1, textBox2.Text.ToUpper(), textBox3.Text.ToUpper(), birth);
+                var asd = webService.TCKimlikNoDogrulaAsync(govId1, textBox2.Text.ToUpper(), textBox3.Text.ToUpper(), birth).Result;
+                result = asd.Body.TCKimlikNoDogrulaResult;
             }
             catch (Exception ex)
             {

@@ -11,21 +11,17 @@ namespace TCKN
 {
     
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://tckimlik.nvi.gov.tr/WS", ConfigurationName="TCKN.KPSPublicSoap")]
     public interface KPSPublicSoap
     {
-        
-        // CODEGEN: http://tckimlik.nvi.gov.tr/WS ad alanındaki Ad öğe adı sıfırlanabilir olarak işaretlenmediğinden, ileti anlaşması oluşturuluyor
-        [System.ServiceModel.OperationContractAttribute(Action="http://tckimlik.nvi.gov.tr/WS/TCKimlikNoDogrula", ReplyAction="*")]
-        TCKN.TCKimlikNoDogrulaResponse TCKimlikNoDogrula(TCKN.TCKimlikNoDogrulaRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tckimlik.nvi.gov.tr/WS/TCKimlikNoDogrula", ReplyAction="*")]
         System.Threading.Tasks.Task<TCKN.TCKimlikNoDogrulaResponse> TCKimlikNoDogrulaAsync(TCKN.TCKimlikNoDogrulaRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class TCKimlikNoDogrulaRequest
@@ -45,7 +41,7 @@ namespace TCKN
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tckimlik.nvi.gov.tr/WS")]
     public partial class TCKimlikNoDogrulaRequestBody
@@ -77,7 +73,7 @@ namespace TCKN
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class TCKimlikNoDogrulaResponse
@@ -97,7 +93,7 @@ namespace TCKN
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tckimlik.nvi.gov.tr/WS")]
     public partial class TCKimlikNoDogrulaResponseBody
@@ -116,13 +112,13 @@ namespace TCKN
         }
     }
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     public interface KPSPublicSoapChannel : TCKN.KPSPublicSoap, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     public partial class KPSPublicSoapClient : System.ServiceModel.ClientBase<TCKN.KPSPublicSoap>, TCKN.KPSPublicSoap
     {
         
@@ -160,24 +156,6 @@ namespace TCKN
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        TCKN.TCKimlikNoDogrulaResponse TCKN.KPSPublicSoap.TCKimlikNoDogrula(TCKN.TCKimlikNoDogrulaRequest request)
-        {
-            return base.Channel.TCKimlikNoDogrula(request);
-        }
-        
-        public bool TCKimlikNoDogrula(long TCKimlikNo, string Ad, string Soyad, int DogumYili)
-        {
-            TCKN.TCKimlikNoDogrulaRequest inValue = new TCKN.TCKimlikNoDogrulaRequest();
-            inValue.Body = new TCKN.TCKimlikNoDogrulaRequestBody();
-            inValue.Body.TCKimlikNo = TCKimlikNo;
-            inValue.Body.Ad = Ad;
-            inValue.Body.Soyad = Soyad;
-            inValue.Body.DogumYili = DogumYili;
-            TCKN.TCKimlikNoDogrulaResponse retVal = ((TCKN.KPSPublicSoap)(this)).TCKimlikNoDogrula(inValue);
-            return retVal.Body.TCKimlikNoDogrulaResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         System.Threading.Tasks.Task<TCKN.TCKimlikNoDogrulaResponse> TCKN.KPSPublicSoap.TCKimlikNoDogrulaAsync(TCKN.TCKimlikNoDogrulaRequest request)
         {
             return base.Channel.TCKimlikNoDogrulaAsync(request);
@@ -197,11 +175,6 @@ namespace TCKN
         public virtual System.Threading.Tasks.Task OpenAsync()
         {
             return System.Threading.Tasks.Task.Factory.FromAsync(((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(null, null), new System.Action<System.IAsyncResult>(((System.ServiceModel.ICommunicationObject)(this)).EndOpen));
-        }
-        
-        public virtual System.Threading.Tasks.Task CloseAsync()
-        {
-            return System.Threading.Tasks.Task.Factory.FromAsync(((System.ServiceModel.ICommunicationObject)(this)).BeginClose(null, null), new System.Action<System.IAsyncResult>(((System.ServiceModel.ICommunicationObject)(this)).EndClose));
         }
         
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration)
